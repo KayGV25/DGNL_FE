@@ -1,6 +1,5 @@
 import { useRouteError, useNavigate } from "react-router-dom"
 import { Button } from "../components/ui/button"
-import ThemeProvider from "@/components/ui/theme-provider"
 
 export default function ErrorPage() {
 
@@ -8,7 +7,6 @@ export default function ErrorPage() {
     const navigate = useNavigate();
 
     return (
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <section className="p-10 h-full bg-background text-foreground">
                 <div>
                     <div className="bg-[url(https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnpkcmtsdXBxN3JkYjJ2MHoxNTNqMnJrOGI4aXNheHg0NnU1bXl0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L1KQ5Wyuf4jEGW7KEU/giphy.gif)] h-[400px] bg-center w-[70%] bg-no-repeat bg-cover mx-auto mb-1 rounded-2xl">
@@ -24,6 +22,5 @@ export default function ErrorPage() {
                     </div>
                 </div>
             </section>
-        </ThemeProvider>
     )
 }

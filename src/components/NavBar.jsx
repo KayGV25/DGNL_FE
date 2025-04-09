@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import ProfileBtn from "./ProfileBtn";
-import { ModeToggle } from "./ui/mode-toggle";
+import { ModeToggle } from "./ModeToogle";
 
 export default function NavBar() {
 // TODO: implement checkk login method, if login then show ProfileBtn if not show Login
