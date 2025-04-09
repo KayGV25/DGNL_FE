@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
-
+import { useTheme } from "../components/ui/theme-provider";
 
 export default function MainLayout(){
-
+    const { theme } = useTheme();
     const [isTop, setIsTop] = useState(true) 
     
     useEffect(() => {

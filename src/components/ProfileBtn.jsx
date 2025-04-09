@@ -6,7 +6,7 @@ import {
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import ListItem from './ListItem';
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function ProfileBtn() {
   return (

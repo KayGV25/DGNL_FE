@@ -1,7 +1,7 @@
 import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function ListItem({ href, children, ...props }) {
   return (

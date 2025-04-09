@@ -2,17 +2,9 @@
 
 @plugin "tailwindcss-animate";
 
-@custom-variant dark (&:is(.dark *));
 
-@media (prefers-color-scheme: dark) {
-  body, body * {
-    @apply bg-zinc-950 text-zinc-50;
-  }
-
-}
-
-body, body * {
-  @apply bg-zinc-50  text-zinc-950;
+body {
+  @apply bg-background text-foreground;
 }
 
 
@@ -111,6 +103,3 @@ body, body * {
   }
 }
 
-.nav-text{
-  @apply text-2xl font-bold text-gray-800
-}

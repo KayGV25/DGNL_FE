@@ -1,12 +1,13 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet } from "react-router-dom";
 import ProfileBtn from "./ProfileBtn";
+import { ModeToggle } from "./ui/mode-toggle";
 
 export default function NavBar() {
 // TODO: implement checkk login method, if login then show ProfileBtn if not show Login
 
   return (
     <>
-        <nav className="flex justify-between items-center h-15 px-12">
+        <nav className="flex justify-between items-center h-15 px-12 bg-background text-foreground">
             <div className="flex justify-between items-center w-fit">
                 <Link to="/">
                     <p className="nav-text">DGNL WEB</p>
@@ -16,6 +17,9 @@ export default function NavBar() {
                 <Link to="/">
                     <p className="nav-text">Home</p>
                 </Link>
+            </div>
+            <div>
+                <ModeToggle />
             </div>
             <div>
                 <ProfileBtn/>
