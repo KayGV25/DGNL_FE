@@ -29,6 +29,9 @@ export default function ProfileBtn() {
                             <ListItem href="/setting">
                                 Setting
                             </ListItem>
+                            <ListItem href="/login">
+                                Login
+                            </ListItem>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>

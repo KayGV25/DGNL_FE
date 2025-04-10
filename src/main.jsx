@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './layout/MainLayout';
 import ErrorPage from './pages/ErrorPage';
 import ThemeProvider from '@/components/ui/theme-provider';
+import LoginPage from './pages/LoginPage';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,11 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <ErrorPage />
   },
+  {
+    path: '/login',
+    element: <LoginPage />,
+    errorElement: <ErrorPage />
+  }
 ])
 
 createRoot(document.getElementById('root')).render(
