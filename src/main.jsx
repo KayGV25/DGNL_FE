@@ -7,6 +7,7 @@ import MainLayout from './layout/MainLayout';
 import ErrorPage from './pages/ErrorPage';
 import ThemeProvider from '@/components/ui/theme-provider';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/register',
+    element: <RegisterPage />,
     errorElement: <ErrorPage />
   }
 ])

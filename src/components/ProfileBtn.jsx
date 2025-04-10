@@ -32,6 +32,9 @@ export default function ProfileBtn() {
                             <ListItem href="/login">
                                 Login
                             </ListItem>
+                            <ListItem href="/register">
+                                Register
+                            </ListItem>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
