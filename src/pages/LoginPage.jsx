@@ -34,7 +34,7 @@ export default function LoginPage() {
 
     const onSubmit = (values) => {
         // do something with the form values.
-        console.log("Login data:", values);
+        
     };
 
     return (
@@ -44,19 +44,15 @@ export default function LoginPage() {
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}
-                        className="space-y-4"
+                        className="space-y-4 flex flex-col"
                     >
                         <FormField
                             control={form.control}
                             name="username"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Username</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Username" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Username">
+                                    <Input placeholder="Username" {...field} />
+                                </CustomFormItem>
 
                             )}
                         />
@@ -64,25 +60,19 @@ export default function LoginPage() {
                             control={form.control}
                             name="password"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="password"
-                                            placeholder="Password"
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Password">
+                                    <Input
+                                        type="password"
+                                        placeholder="Password"
+                                        {...field}
+                                    />
+                                </CustomFormItem>
                             )}
                         />
-                        <div className="flex justify-center">
                             <Button
                                 className="bg-green-500 hover:bg-green-600"
                                 type="submit">Submit
                             </Button>
-                        </div>
                     </form>
                 </Form>
             </div>

@@ -7,12 +7,11 @@ import { z } from "zod"
 import {
     Form,
     FormField,
-    FormControl,
-    FormItem,
-    FormDescription,
-    FormLabel,
-    FormMessage
 } from "@/components/ui/form"
+
+import CustomFormItem from "@/components/CustomFormItem"
+
+import { FormItem, FormControl, FormMessage, FormLabel } from "@/components/ui/form"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -21,7 +20,7 @@ const registerSchema = z.object({
     username: z.string().min(3).max(50),
     email: z.string().email(),
     password: z.string().min(6),
-    genderId: z.number().int().min(1),
+    genderId: z.number().int().min(0).max(1),
     yob: z.number().int().min(1900).max(new Date().getFullYear()),
     mob: z.number().int().min(1).max(12),
     dob: z.number().int().min(1).max(31),
@@ -64,79 +63,67 @@ export default function RegisterPage() {
                             control={form.control}
                             name="username"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Username</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Username" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Username">
+                                    <Input placeholder="Username" {...field} />
+                                </CustomFormItem>
                             )}
                         />
                         <FormField
                             control={form.control}
                             name="email"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl>
-                                        <Input type="email" placeholder="Email" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Email">
+                                    <Input
+                                        type="email"
+                                        placeholder="Email"
+                                        {...field}
+                                    />
+                                </CustomFormItem>
                             )}
                         />
                         <FormField
                             control={form.control}
                             name="password"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="password"
-                                            placeholder="Password"
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Password">
+                                    <Input
+                                        type="password"
+                                        placeholder="Password"
+                                        {...field}
+                                    />
+                                </CustomFormItem>
                             )}
                         />
                         <FormField
                             control={form.control}
                             name="genderId"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Gender</FormLabel>
-                                    <FormControl>
-                                        <div className="flex gap-4">
-                                            <div className="flex items-center">
-                                                <input
-                                                    type="radio"
-                                                    id="male"
-                                                    value="0"
-                                                    checked={field.value === 0}
-                                                    onChange={() => field.onChange(0)}
-                                                    className="mr-2"
-                                                />
-                                                <label htmlFor="male">Male</label>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <input
-                                                    type="radio"
-                                                    id="female"
-                                                    value="1"
-                                                    checked={field.value === 1}
-                                                    onChange={() => field.onChange(1)}
-                                                    className="mr-2"
-                                                />
-                                                <label htmlFor="female">Female</label>
-                                            </div>
+                                <CustomFormItem label="Gender">
+                                    <div className="flex gap-4">
+                                        <div className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                id="male"
+                                                value="0"
+                                                checked={field.value === 0}
+                                                onChange={() => field.onChange(0)}
+                                                className="mr-2"
+                                            />
+                                            <label htmlFor="male">Male</label>
                                         </div>
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                        <div className="flex items-center">
+                                            <input
+                                                type="radio"
+                                                id="female"
+                                                value="1"
+                                                checked={field.value === 1}
+                                                onChange={() => field.onChange(1)}
+                                                className="mr-2"
+                                            />
+                                            <label htmlFor="female">Female</label>
+                                        </div>
+                                    </div>
+                                </CustomFormItem>
                             )}
                         />
                         <div className="grid grid-cols-3 gap-4">
@@ -144,55 +131,43 @@ export default function RegisterPage() {
                                 control={form.control}
                                 name="yob"
                                 render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Year</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                type="number"
-                                                {...field}
-                                                onChange={e => field.onChange(parseInt(e.target.value))}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
+                                    <CustomFormItem label="Year">
+                                        <Input
+                                            type="number"
+                                            {...field}
+                                            onChange={e => field.onChange(parseInt(e.target.value))}
+                                        />
+                                    </CustomFormItem>
                                 )}
                             />
                             <FormField
                                 control={form.control}
                                 name="mob"
                                 render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Month</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                type="number"
-                                                min="1"
-                                                max="12"
-                                                {...field}
-                                                onChange={e => field.onChange(parseInt(e.target.value))}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
+                                    <CustomFormItem label="Month">
+                                        <Input
+                                            type="number"
+                                            min="1"
+                                            max="12"
+                                            {...field}
+                                            onChange={e => field.onChange(parseInt(e.target.value))}
+                                        />
+                                    </CustomFormItem>
                                 )}
                             />
                             <FormField
                                 control={form.control}
                                 name="dob"
                                 render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Day</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                type="number"
-                                                min="1"
-                                                max="31"
-                                                {...field}
-                                                onChange={e => field.onChange(parseInt(e.target.value))}
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
+                                    <CustomFormItem label="Day">
+                                        <Input
+                                            type="number"
+                                            min="1"
+                                            max="31"
+                                            {...field}
+                                            onChange={e => field.onChange(parseInt(e.target.value))}
+                                        />
+                                    </CustomFormItem>
                                 )}
                             />
                         </div>
@@ -200,34 +175,26 @@ export default function RegisterPage() {
                             control={form.control}
                             name="gradeLv"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Grade Level</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="number"
-                                            {...field}
-                                            onChange={e => field.onChange(parseInt(e.target.value))}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Grade Level">
+                                    <Input
+                                        type="number"
+                                        {...field}
+                                        onChange={e => field.onChange(parseInt(e.target.value))}
+                                    />
+                                </CustomFormItem>
                             )}
                         />
                         <FormField
                             control={form.control}
                             name="roleId"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Role ID</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            type="number"
-                                            {...field}
-                                            onChange={e => field.onChange(parseInt(e.target.value))}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
+                                <CustomFormItem label="Role ID">
+                                    <Input
+                                        type="number"
+                                        {...field}
+                                        onChange={e => field.onChange(parseInt(e.target.value))}
+                                    />
+                                </CustomFormItem>
                             )}
                         />
                         <div className="flex justify-center">
