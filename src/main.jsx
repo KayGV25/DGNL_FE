@@ -8,12 +8,19 @@ import ErrorPage from './pages/ErrorPage';
 import ThemeProvider from '@/components/ui/theme-provider';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage/>
+      }
+    ]
   },
   {
     path: '/login',

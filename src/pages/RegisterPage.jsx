@@ -199,7 +199,7 @@ export default function RegisterPage() {
                         />
                         <div className="flex justify-center">
                             <Button
-                                className="bg-green-500 hover:bg-green-600"
+                                className="bg-green-500 hover:bg-green-600 flex-1"
                                 type="submit">Register
                             </Button>
                         </div>

@@ -7,12 +7,9 @@ import { z } from "zod"
 import {
     Form,
     FormField,
-    FormControl,
-    FormItem,
-    FormDescription,
-    FormLabel,
-    FormMessage
 } from "@/components/ui/form"
+
+import CustomFormItem from "@/components/CustomFormItem"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -39,7 +36,7 @@ export default function LoginPage() {
 
     return (
         <div className="bg-background flex justify-center min-h-screen items-center">
-            <div className="w-full max-w-md sm:max-w-sm border-2 rounded-2xl p-6 sm:p-8 bg-foreground text-background">
+            <div className="w-full max-w-md sm:max-w-sm border-2 rounded-2xl p-6 sm:p-8">
                 <h2 className="text-2xl text-center font-bold">Login</h2>
                 <Form {...form}>
                     <form
