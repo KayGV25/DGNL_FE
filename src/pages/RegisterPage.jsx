@@ -12,8 +12,6 @@ import {
 
 import CustomFormItem from "@/components/CustomFormItem"
 
-import { FormItem, FormControl, FormMessage, FormLabel } from "@/components/ui/form"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -129,7 +127,7 @@ export default function RegisterPage() {
                                     <div className="flex justify-center">
                                         <Button
                                             type="submit"
-                                            className="w-full h-11 text-base"
+                                            className="w-full h-11 text-base active:scale-95 transition-all ease-in-out duration-75 hover:scale-[1.01] cursor-pointer"
                                         >
                                             Đăng Ký
                                         </Button>
