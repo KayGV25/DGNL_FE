@@ -12,6 +12,7 @@ import HomePage from './pages/Home';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import VerifyOtpPage from './pages/VerifyOtpPage';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
     path: '/reset-password',
     element: <ResetPasswordPage />,
     errorElement: <ErrorPage />
+  },
+  {
+    path: '/otp',
+    element: <VerifyOtpPage/>,
+    errorElement: <ErrorPage/>
   }
 ])
 
