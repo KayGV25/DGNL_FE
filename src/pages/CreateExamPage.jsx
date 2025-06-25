@@ -50,7 +50,8 @@ export default function CreateExamPage() {
     const handleInputChange = (sectionIdx, fieldIdx, value) => {
         const updatedQuestions = [...form.questions];
         const keys = ["nhanBiet", "thongHieu", "vanDung"];
-        updatedQuestions[sectionIdx][keys[fieldIdx]] = Number(value);
+        const numericValue = value.replace(/[^0-9]/g, '');
+        updatedQuestions[sectionIdx][keys[fieldIdx]] = numericValue === "" ? 0 : Number(numericValue);
         setForm({ ...form, questions: updatedQuestions });
     };
 
@@ -126,9 +127,12 @@ export default function CreateExamPage() {
                                     <div key={field} className="flex-1 mb-4 md:mb-0">
                                         <label className="block mb-1 text-sm">{field}</label>
                                         <Input
-                                            type="number"
-                                            min={0}
-                                            value={form.questions[sectionIdx][["nhanBiet", "thongHieu", "vanDung"][fieldIdx]]}
+                                            value={
+                                                form.questions[sectionIdx][["nhanBiet", "thongHieu", "vanDung"][fieldIdx]] === 0
+                                                    ? ""
+                                                    : form.questions[sectionIdx][["nhanBiet", "thongHieu", "vanDung"][fieldIdx]]
+                                            }
+                                            placeHolder={0}
                                             onChange={(e) =>
                                                 handleInputChange(sectionIdx, fieldIdx, e.target.value)
                                             }

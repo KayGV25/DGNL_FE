@@ -20,7 +20,7 @@ export function useLogin() {
     const onSubmit = async (values) => {
         try {
             setIsLoading(true)
-            const response = authService.login(values);
+            const response = await authService.login(values);
 
             console.log(response);
 

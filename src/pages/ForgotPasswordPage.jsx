@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
                             >
                                 <FormField
                                     control={form.control}
-                                    name="username"
+                                    name="email"
                                     render={({ field }) => (
                                         <CustomFormItem label="Nhập email của bạn">
                                             <Input placeholder="Email" {...field} />

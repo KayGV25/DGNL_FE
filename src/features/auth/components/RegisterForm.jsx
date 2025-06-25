@@ -66,24 +66,35 @@ export default function RegisterForm() {
                                     />
                                 </CustomFormItem>
                             )}
-                        >
+                        />
 
-                        </FormField>
 
                         <div className="flex items-start space-x-2">
-                            <input
-                                type="checkbox"
-                                id="remember"
-                                className="mt-1 h-4 w-4 rounded border-gray-300 cursor-pointer"
+                            <FormField
+                                control={form.control}
+                                name="acceptTerms"
+                                render={({ field }) => (
+                                    <CustomFormItem className="m-0 p-0">
+                                        <div className="flex items-start space-x-2">
+                                            <input
+                                                type="checkbox"
+                                                id="acceptTerms"
+                                                className="mt-1 h-4 w-4 rounded border-gray-300 cursor-pointer"
+                                                checked={field.value}
+                                                onChange={e => field.onChange(e.target.checked)}
+                                                ref={field.ref}
+                                            />
+                                            <label htmlFor="acceptTerms" className="text-sm text-muted-foreground leading-snug">
+                                                <p>Tôi đồng ý đăng ký với điều khoản và điều kiện</p>
+                                                <p className="text-blue-500 underline cursor-pointer">
+                                                    Đọc điều khoản sử dụng của người dùng
+                                                </p>
+                                            </label>
+                                        </div>
+                                    </CustomFormItem>
+                                )}
                             />
-                            <label htmlFor="remember" className="text-sm text-muted-foreground leading-snug">
-                                <p>Tôi đồng ý đăng ký với điều khoản và điều kiện</p>
-                                <p className="text-blue-500 underline cursor-pointer">
-                                    Đọc điều khoản sử dụng của người dùng
-                                </p>
-                            </label>
                         </div>
-
 
                         <div className="flex justify-center">
                             <Button

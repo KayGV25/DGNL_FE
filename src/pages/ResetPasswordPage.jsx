@@ -15,15 +15,18 @@ import CustomFormItem from "@/components/CustomFormItem"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-const loginSchema = z.object({
-    username: z.string().min(3).max(50).or(z.string().email()),
-    password: z.string().min(6),
+const resetPasswordSchema = z.object({
+    newPassword: z.string().min(6).max(50),
+    confirmPassword: z.string().min(6).max(50),
+}).refine((data) => data.newPassword === data.confirmPassword, {
+    message: "Mật khẩu xác nhận không khớp",
+    path: ["confirmPassword"],
 })
 
 
-export default function LoginPage() {
+export default function ResetPasswordPage() {
     const form = useForm({
-        resolver: zodResolver(loginSchema),
+        resolver: zodResolver(resetPasswordSchema),
         defaultValues: {
             username: "",
             password: "",
@@ -53,11 +56,12 @@ export default function LoginPage() {
                             >
                                 <FormField
                                     control={form.control}
-                                    name="username"
+                                    name="newPassword"
                                     render={({ field }) => (
-                                        <CustomFormItem label="Email hoặc tên người dùng">
+                                        <CustomFormItem label="Mật khẩu mới">
                                             <Input
-                                                placeholder="Email/Username"
+                                                type="password"
+                                                placeholder="Nhập mật khẩu mới"
                                                 className="h-11"
                                                 {...field}
                                             />
@@ -66,12 +70,12 @@ export default function LoginPage() {
                                 />
                                 <FormField
                                     control={form.control}
-                                    name="password"
+                                    name="confirmPassword"
                                     render={({ field }) => (
-                                        <CustomFormItem label="Mật khẩu">
+                                        <CustomFormItem label="Xác nhận mật khẩu mới">
                                             <Input
                                                 type="password"
-                                                placeholder="Password"
+                                                placeholder="Xác nhận mật khẩu mới"
                                                 className="h-11"
                                                 {...field}
                                             />
@@ -83,7 +87,7 @@ export default function LoginPage() {
                                         type="submit"
                                         className="w-full h-11 text-base active:scale-95 transition-all ease-in-out duration-75 hover:scale-[1.01] cursor-pointer"
                                     >
-                                        Đăng Nhập
+                                        Đặt lại mật khẩu
                                     </Button>
                                 </div>
                             </form>
