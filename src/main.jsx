@@ -9,6 +9,11 @@ import ThemeProvider from '@/components/ui/theme-provider';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/Home';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
+import VerifyOtpPage from './pages/VerifyOtpPage';
+import CreateExamPage from './pages/CreateExamPage';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <HomePage/>
+        element: <HomePage />
+      },
+      {
+        path: '/create-exam',
+        element: <CreateExamPage/>
       }
     ]
   },
@@ -31,13 +40,30 @@ const router = createBrowserRouter([
     path: '/register',
     element: <RegisterPage />,
     errorElement: <ErrorPage />
+  },
+  {
+    path: '/forgot-password',
+    element: <ForgotPasswordPage />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPasswordPage />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/otp',
+    element: <VerifyOtpPage/>,
+    errorElement: <ErrorPage/>
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </GoogleOAuthProvider>
   </React.StrictMode>
 )

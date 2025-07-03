@@ -24,16 +24,16 @@ export default function ProfileBtn() {
                     <NavigationMenuContent>
                         <ul className="flex flex-col gap-2 w-28 py-2 relative">
                             <ListItem href="/profile">
-                                Profile
+                                Hồ sơ
                             </ListItem>
                             <ListItem href="/setting">
-                                Setting
+                                Cài đặt
                             </ListItem>
                             <ListItem href="/login">
-                                Login
+                                Đăng Nhập
                             </ListItem>
                             <ListItem href="/register">
-                                Register
+                                Đăng ký 
                             </ListItem>
                         </ul>
                     </NavigationMenuContent>
