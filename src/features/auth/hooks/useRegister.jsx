@@ -1,22 +1,9 @@
-import { registerSchema } from "../schemas/authSchemas";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function useRegister() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-
-    const form = useForm({
-        resolver: zodResolver(registerSchema),
-        defaultValues: {
-            username: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-        },
-    });
 
     const onSubmit = async (values) => {
         setIsLoading(true);
@@ -35,7 +22,6 @@ export function useRegister() {
     };
 
     return {
-        form,
         isLoading,
         onSubmit,
     };

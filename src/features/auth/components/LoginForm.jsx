@@ -1,18 +1,32 @@
 import {
     Form,
-    FormField,
 } from "@/components/ui/form"
 
-import CustomFormItem from "@/components/CustomFormItem"
-import { GoogleLogin } from "@react-oauth/google"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useLogin } from "../hooks/useLogin"
 import { Link } from "react-router-dom"
+import FormFieldItem from "@/components/FormFieldItem"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { loginSchema } from "../schemas/authSchemas"
 
 
 export function LoginForm() {
-    const { form, isLoading, onSubmit } = useLogin();
+    const { isLoading, onSubmit } = useLogin();
+
+    const form = useForm({
+        resolver: zodResolver(loginSchema),
+        defaultValues: {
+            username: "",
+            password: "",
+        }
+    })
+
+    const loginFields = [
+        {name: "username", label: "Email hoặc tên người dùng", placeholder: "Email/Username"},
+        {name: "password", label: "Mật khẩu", type: "password", placeholder: "Password"}
+    ]
 
     return (
         <div className="w-full max-w-md space-y-8">
@@ -25,33 +39,18 @@ export function LoginForm() {
                         onSubmit={form.handleSubmit(onSubmit)}
                         className="space-y-6"
                     >
-                        <FormField
-                            control={form.control}
-                            name="username"
-                            render={({ field }) => (
-                                <CustomFormItem label="Email hoặc tên người dùng">
-                                    <Input
-                                        placeholder="Email/Username"
-                                        className="h-11"
-                                        {...field}
-                                    />
-                                </CustomFormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="password"
-                            render={({ field }) => (
-                                <CustomFormItem label="Mật khẩu">
-                                    <Input
-                                        type="password"
-                                        placeholder="Password"
-                                        className="h-11"
-                                        {...field}
-                                    />
-                                </CustomFormItem>
-                            )}
-                        />
+                        {loginFields.map(field => (
+                            <FormFieldItem
+                                control={form.control}
+                                key={field.name}
+                                name={field.name}
+                                label={field.label}
+                                type={field.type}
+                                placeholder={field.placeholder}
+                            >
+                                <Input className="h-11"/>
+                            </FormFieldItem>
+                        ))}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-2">
                                 <Input
@@ -81,16 +80,6 @@ export function LoginForm() {
                             >
                                 {isLoading ? "Đang đăng nhập..." : "Đăng Nhập"}
                             </Button>
-                            <div className="flex items-center justify-center mt-4">
-                                <GoogleLogin
-                                    onSuccess={credentialResponse => {
-                                        console.log(credentialResponse);
-                                    }}
-                                    onError={() => {
-                                        console.log('Login Failed');
-                                    }}
-                                />
-                            </div>
                         </div>
                     </form>
                 </Form>
