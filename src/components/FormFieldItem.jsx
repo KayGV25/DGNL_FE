@@ -1,4 +1,4 @@
-import React,{ cloneElement } from "react";
+import React, { cloneElement } from "react";
 import { FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "./ui/form"
 
 export default function FormFieldItem({
@@ -17,16 +17,16 @@ export default function FormFieldItem({
                 <FormItem>
                     {label && <FormLabel>{label}</FormLabel>}
                     <FormControl>
-    {children && React.isValidElement(children)
-        ? cloneElement(children, { ...field, ...props })
-        : children}
+                        {children && React.isValidElement(children)
+                            ? cloneElement(children, { ...field, ...props })
+                            : children}
                     </FormControl>
-                    {description && (
+                 {description && (
                         <FormDescription>
                             {description}
                         </FormDescription>
                     )}
-                    <FormMessage/>
+                    <FormMessage />
                 </FormItem>
             )}
         />
