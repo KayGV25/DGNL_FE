@@ -1,21 +1,11 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useState } from "react";   
 import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form"
 import { authService } from "../services/authService";
-import { loginSchema } from "../schemas/authSchemas";
+
 
 export function useLogin() {
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
-
-    const form = useForm({
-        resolver: zodResolver(loginSchema),
-        defaultValues: {
-            username: "",
-            password: "",
-        }
-    })
 
     const onSubmit = async (values) => {
         try {
@@ -56,7 +46,6 @@ export function useLogin() {
 
     };
     return {
-        form,
         isLoading,
         onSubmit
     }
