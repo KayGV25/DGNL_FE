@@ -1,5 +1,6 @@
 // src/pages/CreateExamPage.jsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 
@@ -26,6 +27,7 @@ const questionSections = [
 ];
 
 export default function CreateExamPage() {
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         subject: "",
         chapter: "",
@@ -57,8 +59,25 @@ export default function CreateExamPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // TODO: handle submit logic (call API, etc.)
-        alert("Exam created! (Demo)");
+
+        // Validate that at least some questions are configured
+        if (totalToken === 0) {
+            alert("Vui lòng cấu hình ít nhất 1 câu hỏi!");
+            return;
+        }
+
+        if (!form.subject || !form.chapter || !form.duration) {
+            alert("Vui lòng điền đầy đủ thông tin môn học, chương và thời gian!");
+            return;
+        }
+
+        // Navigate to test creation screen with configuration
+        navigate('/test-creation', {
+            state: {
+                examConfig: form,
+                totalQuestions: totalToken
+            }
+        });
     };
 
     return (

@@ -13,6 +13,8 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import VerifyOtpPage from './pages/VerifyOtpPage';
 import CreateExamPage from './pages/CreateExamPage';
+import TestCreationScreen from './pages/TestCreationScreen';
+import TestCreatedPage from './pages/TestCreatedPage';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/create-exam',
-        element: <CreateExamPage/>
+        element: <CreateExamPage />
+      },
+      {
+        path: '/test-creation',
+        element: <TestCreationScreen />
+      },
+      {
+        path: '/test-created',
+        element: <TestCreatedPage />
       }
     ]
   },
@@ -52,15 +62,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/otp',
-    element: <VerifyOtpPage/>,
-    errorElement: <ErrorPage/>
+    element: <VerifyOtpPage />,
+    errorElement: <ErrorPage />
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-        <RouterProvider router={router} />
-      </ThemeProvider>
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 )

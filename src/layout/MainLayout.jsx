@@ -16,6 +16,7 @@ export default function MainLayout() {
         <>
             <div id="top" className="invisible"></div>
             <NavBar />
+            <Outlet />
             <a href="#top" className={`fixed bottom-7 right-4 size-10 rounded-lg border-2 dark:border-gray-50 border-gray-900 grid place-items-center cursor-pointer 
             ${isTop ? "hidden" : "block"}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
