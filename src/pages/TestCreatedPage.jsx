@@ -27,8 +27,12 @@ const TestCreatedPage = () => {
     };
 
     const handleTakeTest = () => {
-        // TODO: Navigate to test taking page
-        alert('Chức năng vào thi sẽ được phát triển sớm!');
+        navigate('/take-exam', {
+            state: { 
+                testData: testData,
+                examConfig: examConfig 
+            }
+        });
     };
 
     return (

@@ -15,6 +15,7 @@ import VerifyOtpPage from './pages/VerifyOtpPage';
 import CreateExamPage from './pages/CreateExamPage';
 import TestCreationScreen from './pages/TestCreationScreen';
 import TestCreatedPage from './pages/TestCreatedPage';
+import TakeExamPage from './pages/TakeExamPage';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/test-created',
         element: <TestCreatedPage />
+      },
+      {
+        path: '/take-exam',
+        element: <TakeExamPage />
       }
     ]
   },
