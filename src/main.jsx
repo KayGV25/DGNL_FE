@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainLayout from './layout/MainLayout';
-import ErrorPage from './pages/ErrorPage';
-import ThemeProvider from '@/components/ui/theme-provider';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/Home';
-import ForgotPasswordPage from './pages/ForgotPasswordPage';
-import ResetPasswordPage from './pages/ResetPasswordPage';
-import VerifyOtpPage from './pages/VerifyOtpPage';
-import CreateExamPage from './pages/CreateExamPage';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import MainLayout from './layout/MainLayout'
+import ErrorPage from './pages/ErrorPage'
+import ThemeProvider from '@/components/ui/theme-provider'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import HomePage from './pages/Home'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
+import ResetPasswordPage from './pages/ResetPasswordPage'
+import VerifyOtpPage from './pages/VerifyOtpPage'
+import CreateExamPage from './pages/CreateExamPage'
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/create-exam',
-        element: <CreateExamPage/>
+        element: <CreateExamPage />
       }
     ]
   },
@@ -52,15 +52,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/otp',
-    element: <VerifyOtpPage/>,
-    errorElement: <ErrorPage/>
+    element: <VerifyOtpPage />,
+    errorElement: <ErrorPage />
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-        <RouterProvider router={router} />
-      </ThemeProvider>
+    <ThemeProvider defaultTheme='system' storageKey='vite-ui-theme'>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 )
