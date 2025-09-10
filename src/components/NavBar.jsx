@@ -11,7 +11,7 @@ export default function NavBar() {
       <nav className='bg-background text-foreground flex h-15 items-center justify-between px-12'>
         <div className='flex w-fit items-center justify-between'>
           <Link to='/'>
-            <p className='nav-text'>DGNL WEB</p>
+            <p className='nav-text text-xl font-semibold'>DGNL WEB</p>
           </Link>
         </div>
         <div className='flex w-2/5 items-center justify-between'>
