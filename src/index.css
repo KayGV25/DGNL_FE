@@ -1,12 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
-
 
 body {
   @apply bg-background text-foreground;
 }
-
 
 :root {
   --background: hsl(0 0% 100%);
@@ -104,11 +102,11 @@ body {
 }
 
 h1 {
-  @apply text-3xl font-bold leading-tight tracking-tighter md:text-4xl;
+  @apply text-3xl leading-tight font-bold tracking-tighter md:text-4xl;
 }
 h2 {
-  @apply text-2xl font-bold leading-tight tracking-tighter md:text-3xl;
+  @apply text-2xl leading-tight font-bold tracking-tighter md:text-3xl;
 }
 h3 {
-  @apply text-xl font-bold leading-tight tracking-tighter md:text-2xl;
+  @apply text-xl leading-tight font-bold tracking-tighter md:text-2xl;
 }
