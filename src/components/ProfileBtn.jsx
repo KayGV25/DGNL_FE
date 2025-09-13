@@ -37,7 +37,6 @@ export default function ProfileBtn() {
                 <ListItem href='/profile'>Hồ sơ</ListItem>
                 <ListItem href='/setting'>Cài đặt</ListItem>
                 <ListItem href='/login'>Đăng Nhập</ListItem>
-                <ListItem href='/register'>Đăng ký</ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
