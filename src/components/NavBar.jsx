@@ -19,7 +19,7 @@ export default function NavBar() {
             <p className='nav-text'>Trang chủ</p>
           </Link>
           <div>
-            <Link to='/create-exam'>Tạo đề thi</Link>
+            <Link to='/exams/setup'>Tạo đề thi</Link>
           </div>
           <div>
             <Link>Dịch vụ</Link>
@@ -32,7 +32,6 @@ export default function NavBar() {
           </div>
         </div>
       </nav>
-      <Outlet />
     </>
   )
 }

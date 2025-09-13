@@ -19,6 +19,7 @@ export default function MainLayout() {
     <>
       <div id='top' className='invisible'></div>
       <NavBar />
+      <Outlet />
       <a
         href='#top'
         className={`fixed right-4 bottom-7 grid size-10 cursor-pointer place-items-center rounded-lg border-2 border-gray-900 dark:border-gray-50 ${isTop ? 'hidden' : 'block'}`}
