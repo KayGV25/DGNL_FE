@@ -12,7 +12,8 @@ import HomePage from './pages/Home'
 import ForgotPasswordPage from './pages/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import VerifyOtpPage from './pages/VerifyOtpPage'
-import CreateExamPage from './pages/CreateExamPage'
+import ExamCreatePage from './features/exam/pages/ExamCreatePage'
+import ExamSetupPage from './features/exam/pages/ExamSetupPage'
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,12 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: '/create-exam',
-        element: <CreateExamPage />
+        path: '/exams/setup',
+        element: <ExamSetupPage />
+      },
+      {
+        path: '/exams/create',
+        element: <ExamCreatePage />
       }
     ]
   },

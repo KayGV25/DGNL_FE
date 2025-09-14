@@ -1,7 +1,7 @@
-// src/pages/CreateExamPage.jsx
 import React, { useState } from 'react'
-import { Input } from '../components/ui/input'
-import { Button } from '../components/ui/button'
+import { useNavigate } from 'react-router-dom'
+import { Input } from '../../../components/ui/input'
+import { Button } from '../../../components/ui/button'
 
 const subjects = ['Toán học', 'Vật lý', 'Hóa học']
 const chapters = ['Chương 1. Hàm số', 'Chương 2. Hình học']
@@ -25,7 +25,8 @@ const questionSections = [
   }
 ]
 
-export default function CreateExamPage() {
+const ExamSetupPage = () => {
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     subject: '',
     chapter: '',
@@ -37,7 +38,6 @@ export default function CreateExamPage() {
     ]
   })
 
-  // Tính tổng số token (tổng số câu hỏi)
   const totalToken = form.questions.reduce(
     (sum, q) => sum + q.nhanBiet + q.thongHieu + q.vanDung,
     0
@@ -57,12 +57,29 @@ export default function CreateExamPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // TODO: handle submit logic (call API, etc.)
-    alert('Exam created! (Demo)')
+
+    // Validate that at least some questions are configured
+    if (totalToken === 0) {
+      alert('Vui lòng cấu hình ít nhất 1 câu hỏi!')
+      return
+    }
+
+    if (!form.subject || !form.chapter || !form.duration) {
+      alert('Vui lòng điền đầy đủ thông tin môn học, chương và thời gian!')
+      return
+    }
+
+    // Navigate to test creation screen with configuration
+    navigate('/exams/create', {
+      state: {
+        examConfig: form,
+        totalQuestions: totalToken
+      }
+    })
   }
 
   return (
-    <div className='bg-background text-foreground min-h-screen p-8 pt-0'>
+    <div className='bg-background text-foreground p-8 pt-0'>
       <form onSubmit={handleSubmit} className='mx-auto rounded-lg p-4 sm:p-6 md:p-8'>
         <h2 className='mb-1 text-2xl font-bold'>Khởi tạo đề thi</h2>
         <p className='mb-6 text-gray-600'>
@@ -153,7 +170,7 @@ export default function CreateExamPage() {
         <div className='mt-6'>
           <Button
             type='submit'
-            className='w-full cursor-pointer rounded bg-black px-6 py-2 text-white hover:bg-gray-800 sm:w-auto'
+            className='bg-primary w-full cursor-pointer rounded px-6 py-2 sm:w-auto'
           >
             Tạo đề thi {totalToken > 0 ? `(${totalToken} token)` : ''}
           </Button>
@@ -162,3 +179,5 @@ export default function CreateExamPage() {
     </div>
   )
 }
+
+export default ExamSetupPage
