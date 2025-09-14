@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Input } from '../components/ui/input'
-import { Button } from '../components/ui/button'
+import { Input } from '../../../components/ui/input'
+import { Button } from '../../../components/ui/button'
 
 const subjects = ['Toán học', 'Vật lý', 'Hóa học']
 const chapters = ['Chương 1. Hàm số', 'Chương 2. Hình học']
@@ -25,7 +25,7 @@ const questionSections = [
   }
 ]
 
-const ExamSetup = () => {
+const ExamSetupPage = () => {
   const navigate = useNavigate()
   const [form, setForm] = useState({
     subject: '',
@@ -180,4 +180,4 @@ const ExamSetup = () => {
   )
 }
 
-export default ExamSetup
+export default ExamSetupPage
