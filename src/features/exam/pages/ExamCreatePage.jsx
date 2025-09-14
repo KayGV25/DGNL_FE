@@ -42,6 +42,11 @@ const ExamCreatePage = () => {
     setIsLoading(true)
     try {
       const res = await examService.createExam(testData)
+      navigate('/exams/created', {
+        state: {
+          testData: testData
+        }
+      })
     } catch (error) {
       console.error('Failed to create exam:', error)
     } finally {
