@@ -42,7 +42,7 @@ const ExamCreatePage = () => {
     setIsLoading(true)
     try {
       const res = await examService.createExam(testData)
-      navigate('/exams/created', {
+      navigate('/exams/success', {
         state: {
           testData: testData
         }

@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <ExamCreatePage />
       },
       {
-        path: '/exams/created',
+        path: '/exams/success',
         element: <ExamCreatedPage />
       }
     ]
